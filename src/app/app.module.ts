@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ProductListModule } from 'ram-product-list';
-
+import { ProductGridModule } from 'ram-product-grid';
 
 import { ROUTING } from './app-routing.module';
 
@@ -35,7 +35,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     SharedModule,
     VirtualScrollerModule,
     SocketIoModule.forRoot(config),
-    ProductListModule
+    ProductListModule,
+    ProductGridModule
   ],
   declarations: [
     AppComponent,

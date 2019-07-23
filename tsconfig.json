@@ -19,6 +19,9 @@
     "paths": {
       "product-list": [
         "dist/product-list"
+      ],
+      "product-grid": [
+        "dist/product-grid"
       ]
     }
   }
