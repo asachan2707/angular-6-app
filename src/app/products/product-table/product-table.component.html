@@ -1,6 +1,6 @@
 <div class="">
   <h3>Product List</h3>
-  <div>Total items: {{data.length | number : '1.0-0'}}</div>
+  <div>Total items: <span *ngIf="data?.length; else loading">{{data?.length | number : '1.0-0'}}</span></div>
   <table class="table table-hover">
     <thead>
       <tr>
