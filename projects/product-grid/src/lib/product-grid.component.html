@@ -3,7 +3,7 @@
     <div class="card-body text-dark">
         <h5 class="card-title">{{ item.productName }}</h5>
         <p class="card-text">Description: <span *ngIf="item.description; else noData">{{ item.description }}</span></p>
-        <p class="card-text">Launch Date: {{ item.date | date }}</p>
+        <p class="card-text">Launch Date: {{ item.date | date: 'dd MMM yyyy hh:mm:ss' }}</p>
         <p class="card-text">Price: {{ item.value | currency: '$' }}</p>
     </div>
     <div class="card-footer bg-transparent border-dark">StarRating: {{ item.starRating }}</div>

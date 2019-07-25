@@ -21,7 +21,7 @@ export class ProductGridComponent implements OnInit, OnDestroy {
         this.sub = this.productService.getProducts().subscribe(
             (products: Product[]) => {
                 this.products = products;
-                console.log('Grid comp: this.products: ', this.products);
+                // console.log('Grid comp: this.products: ', this.products);
                 this.ref.detectChanges();
             },
             (err: any) => this.errorMessage = err.error

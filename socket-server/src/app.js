@@ -3,6 +3,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 const documents = {};
+let bulkResponse = [];
 
 io.on('connection', socket => {
     let previousId;
@@ -11,6 +12,12 @@ io.on('connection', socket => {
         socket.join(currentId, () => console.log(`Socket ${socket.id} joined room ${currentId}`));
         previousId = currentId;
     }
+
+    socket.on('getBulkData', () => {
+        console.log('Table data started');
+        socket.emit('bulk', generateLocalBulkData());
+        console.log('Table data ended');
+    });
 
     socket.on('getDoc', docId => {
         safeJoin(docId);
@@ -37,7 +44,10 @@ io.on('connection', socket => {
     });
 
     socket.on('products', () => {
-        socket.emit('documents', products);
+        setInterval(() => {
+            products[0].date = new Date();
+            socket.emit('documents', products);
+        }, 1000);
     });
 
     io.emit('documents', products);
@@ -48,6 +58,28 @@ io.on('connection', socket => {
 http.listen(4444, () => {
     console.log('Listening on port 4444');
 });
+
+function generateLocalBulkData() {
+    let temp = [];
+    temp = generateObj(temp);
+    this.bulkResponse = temp;
+    console.log('data length: ', this.bulkResponse.length);
+    return this.bulkResponse;
+}
+
+function generateObj(temp) {
+    for (let i = 0; i <= 999999; i++) {
+        const obj = {
+            id: 'Product_id-' + (i + 1),
+            name: 'Product-' + (i + 1),
+            type: (i % 3) === 0 ? 'Electronic' : 'Home-appliances',
+            price: Math.random() * (2000 - 200) + 200,
+            is_available: (i % 2) === 0 ? true : false
+        };
+        temp.push(obj);
+    }
+    return temp;
+}
 
 let products = [
     {

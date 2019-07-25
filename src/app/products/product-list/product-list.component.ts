@@ -27,7 +27,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.sub.add(this.productService.getProducts().subscribe(
             (products: Product[]) => {
                 this.products = products;
-                console.log('list comp: this.products: ', this.products);
+                // console.log('list comp: this.products: ', this.products);
                 this.ref.detectChanges();
             },
             (err: any) => this.errorMessage = err.error

@@ -32,8 +32,9 @@ export class ProductService {
         return this.socket.fromEvent<Product[]>('documents');
     }
 
-    getDocument(id: string) {
-        this.socket.emit('getDoc', id);
+    getBulkData() {
+        this.socket.emit('getBulkData');
+        return this.socket.fromEvent<any>('bulk');
     }
 
     createProduct(product: Product) {
