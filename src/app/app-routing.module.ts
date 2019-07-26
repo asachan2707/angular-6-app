@@ -13,6 +13,7 @@ import { ProductTableComponent } from './products/table-view/product-table/produ
 import { ProductLibraryComponent } from './products/product-library/product-library.component';
 import { TableViewComponent } from './products/table-view/table-view.component';
 import { ProductPaginationComponent } from './products/table-view/product-pagination/product-pagination.component';
+import { ServerSidePagingComponent } from './products/table-view/server-side-paging/server-side-paging.component';
 
 const appRoutes: Routes = [
   {
@@ -28,8 +29,9 @@ const appRoutes: Routes = [
         children: [
           { path: 'product-table', component: ProductTableComponent },
           { path: 'product-pagination', component: ProductPaginationComponent },
+          { path: 'server-pagination', component: ServerSidePagingComponent },
           { path: 'library-list', component: ProductLibraryComponent },
-          { path: '**', component: PageNotFoundComponent }
+          { path: '', redirectTo: 'library-list', pathMatch: 'full' }
         ]
       },
       { path: 'product-chart', canActivate: [AuthGuard], component: ProductChartComponent },

@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <ng-container *ngIf="items.length; else loading">
+        <ng-container *ngIf="items?.length; else loading">
             <tr *ngFor="let item of items; let i = index">
                 <td class="col-size-sm">{{i+1}}/{{items.length}}</td>
                 <td class="col-size-lg">{{item.productCode}}</td>

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { ProductService } from '../product.service';
-// import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'pm-table-view',
@@ -9,21 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableViewComponent implements OnInit {
 
-    // data: any;
-    // errorMessage: '';
-    // sub = new Subscription();
-
-    constructor(
-        // private productService: ProductService
-        ) { }
+    constructor() { }
 
     ngOnInit() {
-    //     this.sub.add(this.productService.getBulkData().subscribe(
-    //         (data: any) => {
-    //             this.data = data;
-    //             console.log('test: ', this.data.length);
-    //         },
-    //         (err: any) => this.errorMessage = err.error
-    //     ));
     }
 }

@@ -5,6 +5,7 @@ const io = require('socket.io')(http);
 const documents = {};
 let bulkResponse = [];
 
+generateLocalBulkData()
 io.on('connection', socket => {
     let previousId;
     const safeJoin = currentId => {
@@ -14,9 +15,32 @@ io.on('connection', socket => {
     }
 
     socket.on('getBulkData', () => {
-        console.log('Table data started');
-        socket.emit('bulk', generateLocalBulkData());
-        console.log('Table data ended');
+        // console.log('Table data started');
+        socket.emit('bulk', bulkResponse);
+        // console.log('Table data ended');
+    });
+
+    socket.on('sendPageReq', (data) => {
+        const startIndex = data.pageSize * (data.page - 1);
+        const endIndex = data.pageSize * data.page;
+        const pagedData = bulkResponse.slice(startIndex, endIndex);
+        const responseData = {
+            page_data: pagedData,
+            page: data.page,
+            result_count: bulkResponse.length
+        }
+        // console.log('responseData: ', responseData, pagedData.length)
+        socket.emit('getPageData', responseData);
+
+        setInterval(() => {
+            responseData.page_data[0].price = Math.random() * (2000 - 200) + 200;
+            responseData.page_data[5].price = Math.random() * (2000 - 200) + 200;
+            responseData.page_data[7].price = Math.random() * (2000 - 200) + 200;
+            responseData.page_data[3].price = Math.random() * (2000 - 200) + 200;
+            responseData.page_data[6].price = Math.random() * (2000 - 200) + 200;
+            responseData.page_data[9].price = Math.random() * (2000 - 200) + 200;
+                socket.emit('getPageData', responseData);
+        }, 5000);
     });
 
     socket.on('getDoc', docId => {
@@ -62,8 +86,8 @@ http.listen(4444, () => {
 function generateLocalBulkData() {
     let temp = [];
     temp = generateObj(temp);
-    this.bulkResponse = temp;
-    console.log('data length: ', this.bulkResponse.length);
+    bulkResponse = temp;
+    // console.log('data length: ', this.bulkResponse.length);
     return this.bulkResponse;
 }
 

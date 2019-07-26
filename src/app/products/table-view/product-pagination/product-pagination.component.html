@@ -1,24 +1,19 @@
-data: {{ data?.length }}
-
-<!-- <ul>
-  <li *ngFor="let item of data | paginate: { itemsPerPage: 20, currentPage: p }">
-    Name: {{ item.name }}
-    Price: {{ item.price }}
-  </li>
-</ul> -->
+<h4>Client Side Pagination</h4>
+<br />
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Price</th>
+      <th class="table-style table-heading ">Name</th>
+      <th class="table-style table-heading ">Price</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of data | paginate: { itemsPerPage: 20, currentPage: p }">
-      <th>{{ item.name }}</th>
-      <th>{{ item.price }}</th>
+    <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: p }">
+      <th class="table-style">{{ item.name }}</th>
+      <th class="table-style">{{ item.price }}</th>
     </tr>
   </tbody>
 </table>
-           
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<br />
+<pagination-controls (pageChange)="p = $event"> </pagination-controls>
+<!-- (pageChange)="pageChanged($event)" -->

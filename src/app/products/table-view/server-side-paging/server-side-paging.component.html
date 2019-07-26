@@ -1,0 +1,19 @@
+<h4>Server Side Pagination</h4>
+<br />
+<table>
+  <thead>
+    <tr>
+      <th class="table-style table-heading ">Name</th>
+      <th class="table-style table-heading ">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data.page_data | paginate: { itemsPerPage: pageSize, currentPage: data.page, totalItems: data.result_count }">
+      <th class="table-style">{{ item.name }}</th>
+      <th class="table-style">{{ item.price | number: '1.2-2' }}</th>
+    </tr>
+  </tbody>
+</table>
+<br />
+
+<pagination-controls (pageChange)="pageChanged($event)" maxSize="7" autoHide="false"> </pagination-controls>

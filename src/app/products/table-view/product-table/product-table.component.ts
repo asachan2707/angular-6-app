@@ -22,7 +22,7 @@ export class ProductTableComponent implements OnInit {
         this.sub.add(this.productService.getBulkData().subscribe(
             (data: any) => {
                 this.data = data;
-                console.log('test: ', this.data.length);
+                // console.log('test: ', this.data.length);
             },
             (err: any) => this.errorMessage = err.error
         ));

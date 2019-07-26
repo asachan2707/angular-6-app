@@ -20,10 +20,9 @@ export class ProductPaginationComponent implements OnInit {
     this.sub.add(this.productService.getBulkData().subscribe(
       (data: any) => {
           this.data = data;
-          console.log('ProductPaginationComponent: ', this.data.length);
+          // console.log('ProductPaginationComponent: ', this.data.length);
       },
       (err: any) => this.errorMessage = err.error
   ));
   }
-
 }

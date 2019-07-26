@@ -26,6 +26,7 @@ import { ProductTableComponent } from './products/table-view/product-table/produ
 import { ProductLibraryComponent } from './products/product-library/product-library.component';
 import { ProductPaginationComponent } from './products/table-view/product-pagination/product-pagination.component';
 import { TableViewComponent } from './products/table-view/table-view.component';
+import { ServerSidePagingComponent } from './products/table-view/server-side-paging/server-side-paging.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
@@ -56,7 +57,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     ProductTableComponent,
     ProductLibraryComponent,
     ProductPaginationComponent,
-    TableViewComponent
+    TableViewComponent,
+    ServerSidePagingComponent
   ],
   bootstrap: [AppComponent]
 })
