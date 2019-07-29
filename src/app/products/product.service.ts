@@ -51,9 +51,10 @@ export class ProductService {
         this.socket.emit('editDoc', product);
         return this.socket.fromEvent<Product>('product');
     }
+
     deleteProduct(product: Product) {
         this.socket.emit('deleteDoc', product);
-        return null;
+        return this.socket.fromEvent<Product>('delItem');
     }
 
     getProducts1(): Observable<Product[]> {

@@ -65,11 +65,14 @@ io.on('connection', socket => {
     socket.on('deleteDoc', product => {
         products = products.filter(item => item.productCode !== product.productCode);
         io.emit('documents', products);
+        socket.emit('delItem', product);
     });
 
     socket.on('products', () => {
         setInterval(() => {
-            products[0].date = new Date();
+            if (products.length) {
+                products[0].date = new Date();
+            }
             socket.emit('documents', products);
         }, 1000);
     });

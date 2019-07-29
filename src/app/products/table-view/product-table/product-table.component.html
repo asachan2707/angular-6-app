@@ -1,6 +1,6 @@
 <div class="">
-  <h4>Product List</h4>
-  <div>Total items: <span *ngIf="data?.length; else loading">{{data?.length | number : '1.0-0'}}</span></div>
+  <h4>Virtual Scroll</h4>
+  <div>Total items: <span *ngIf="data?.length; else loadingCount">{{data?.length | number : '1.0-0'}}</span></div>
   <br />
   <table class="table table-hover">
     <thead>
@@ -13,7 +13,7 @@
         <th>Availability</th>
       </tr>
     </thead>
-    <virtual-scroller #scroll *ngIf="data?.length; else loading" [items]="data">
+    <virtual-scroller #scroll *ngIf="data?.length; else loadingData" [items]="data">
       <tbody>
         <tr *ngFor="let item of scroll.viewPortItems; let i = index">
           <td class="col-size-sm">{{i+1}}/{{scroll.viewPortItems.length}}</td>
@@ -28,4 +28,9 @@
   </table>
 </div>
 
-<ng-template #loading>Loading...</ng-template>
+<ng-template #loadingCount>Loading...</ng-template>
+<ng-template #loadingData>
+  <div class="mx-3 my-3">
+    Loading...
+  </div>
+</ng-template>
