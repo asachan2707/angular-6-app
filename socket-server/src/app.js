@@ -4,6 +4,7 @@ const io = require('socket.io')(http);
 
 const documents = {};
 let bulkResponse = [];
+let dd;
 
 generateLocalBulkData()
 io.on('connection', socket => {
@@ -29,13 +30,10 @@ io.on('connection', socket => {
             page: data.page,
             result_count: bulkResponse.length
         }
-        // console.log('responseData: ', responseData, pagedData.length)
-        socket.emit('getPageData', responseData);
-
-        let dd;
         if (dd) {
             clearInterval(dd);
         }
+        socket.emit('getPageData', responseData);
 
         dd = setInterval(() => {
             for (let i of [0, 5, 7, 3, 6, 9]) {
