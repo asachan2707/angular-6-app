@@ -13,23 +13,28 @@ export class ServerSidePagingComponent implements OnInit {
     errorMessage: '';
     page = 1;
     pageSize = 20;
-    sub = new Subscription();
+    sub: Subscription = new Subscription();
 
     constructor(private productService: ProductService) { }
 
     ngOnInit() {
-        this.sub.add(this.productService.getSelectedPageData(this.pageSize, this.page).subscribe(
+        this.wsrequest();
+    }
+
+    wsrequest() {
+        this.sub = this.productService.getSelectedPageData(this.pageSize, this.page).subscribe(
             (res: any) => {
                 this.data = res;
-                // console.log('ServerSidePagingComponent: ', this.data);
             },
             (err: any) => this.errorMessage = err.error
-        ));
+        );
     }
 
     pageChanged($event) {
-        // console.log('selected page: ', $event);
         this.page = $event;
-        this.productService.getSelectedPageData(this.pageSize, this.page);
+        if (this.sub) {
+            this.sub.unsubscribe();
+            this.wsrequest();
+        }
     }
 }

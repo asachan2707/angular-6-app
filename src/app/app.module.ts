@@ -23,7 +23,7 @@ import { ProductChartComponent } from './products/product-chart/product-chart.co
 import { SharedModule } from './shared/shared.module';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { ProductTableComponent } from './products/table-view/product-table/product-table.component';
-import { ProductLibraryComponent } from './products/product-library/product-library.component';
+import { ProductLibraryComponent } from './products/table-view/product-library/product-library.component';
 import { ProductPaginationComponent } from './products/table-view/product-pagination/product-pagination.component';
 import { TableViewComponent } from './products/table-view/table-view.component';
 import { ServerSidePagingComponent } from './products/table-view/server-side-paging/server-side-paging.component';

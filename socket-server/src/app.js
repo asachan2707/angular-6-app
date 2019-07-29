@@ -32,14 +32,18 @@ io.on('connection', socket => {
         // console.log('responseData: ', responseData, pagedData.length)
         socket.emit('getPageData', responseData);
 
-        setInterval(() => {
-            responseData.page_data[0].price = Math.random() * (2000 - 200) + 200;
-            responseData.page_data[5].price = Math.random() * (2000 - 200) + 200;
-            responseData.page_data[7].price = Math.random() * (2000 - 200) + 200;
-            responseData.page_data[3].price = Math.random() * (2000 - 200) + 200;
-            responseData.page_data[6].price = Math.random() * (2000 - 200) + 200;
-            responseData.page_data[9].price = Math.random() * (2000 - 200) + 200;
-                socket.emit('getPageData', responseData);
+        let dd;
+        if (dd) {
+            clearInterval(dd);
+        }
+
+        dd = setInterval(() => {
+            for (let i of [0, 5, 7, 3, 6, 9]) {
+                responseData.page_data[i] = {
+                    price: Math.random() * (2000 - 200) + 200
+                }
+            }
+            socket.emit('getPageData', responseData);
         }, 5000);
     });
 

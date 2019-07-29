@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../product.service';
+import { ProductService } from '../../product.service';
 import { Subscription } from 'rxjs';
-import { Product } from '../product';
+import { Product } from '../../product';
 
 @Component({
   selector: 'pm-product-library',

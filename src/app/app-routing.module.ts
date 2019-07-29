@@ -10,7 +10,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { ProductGridComponent } from './products/product-grid/product-grid.component';
 import { ProductChartComponent } from './products/product-chart/product-chart.component';
 import { ProductTableComponent } from './products/table-view/product-table/product-table.component';
-import { ProductLibraryComponent } from './products/product-library/product-library.component';
+import { ProductLibraryComponent } from './products/table-view/product-library/product-library.component';
 import { TableViewComponent } from './products/table-view/table-view.component';
 import { ProductPaginationComponent } from './products/table-view/product-pagination/product-pagination.component';
 import { ServerSidePagingComponent } from './products/table-view/server-side-paging/server-side-paging.component';
