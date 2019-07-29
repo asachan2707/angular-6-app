@@ -39,9 +39,7 @@ io.on('connection', socket => {
 
         dd = setInterval(() => {
             for (let i of [0, 5, 7, 3, 6, 9]) {
-                responseData.page_data[i] = {
-                    price: Math.random() * (2000 - 200) + 200
-                }
+                responseData.page_data[i].price = Math.random() * (2000 - 200) + 200
             }
             socket.emit('getPageData', responseData);
         }, 5000);
