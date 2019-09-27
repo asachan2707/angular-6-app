@@ -8,7 +8,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "server": "cd socket-server && npm start",
+    "server-install": "cd socket-server && npm install",
+    "start": "concurrently \"ng serve -o --port=5000\" \"npm run server\"",
+    "child-install": "concurrently \"npm install\" \"npm run server-install\""
   },
   "private": true,
   "dependencies": {
